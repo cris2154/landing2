@@ -1,0 +1,83 @@
+<section id="contacto" class="bg-white py-20 px-6">
+  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-30 items-center">
+
+    <!-- Imagen con borde inferior redondo -->
+    <div id="imagen" class="w-full h-full overflow-hidden ">
+      <img 
+        src="/trabajadores.png" 
+        alt="consultorio" 
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <!-- Texto -->
+    <div>
+      <h2 class="text-4xl font-bold text-sky-600 mb-6">Visítanos</h2>
+
+      <!-- UBICACIÓN -->
+      <div class="mb-8">
+        <p class="flex items-center gap-3 text-slate-700 font-semibold mb-2">
+          <span class="w-10 h-[1px] bg-sky-500"></span>
+          Ubicación
+        </p>
+
+        <p class="text-slate-700 leading-relaxed mb-4">
+          Av. Los Olivos 234 – Oficina 402<br/>
+          San Isidro, Lima, Perú
+        </p>
+
+        <a 
+          href="https://maps.google.com"
+          target="_blank"
+          class="inline-flex items-center gap-2 bg-sky-500 text-white px-5 py-2 rounded-full text-sm font-medium shadow-md transition-transform hover:-translate-y-1 hover:bg-sky-600"
+        >
+          <span>📍</span> ¿Cómo llegar?
+        </a>
+      </div>
+
+      <!-- HORARIO -->
+      <div>
+        <p class="flex items-center gap-3 text-slate-700 font-semibold mb-2">
+          <span class="w-10 h-[1px] bg-sky-500"></span>
+          Horario de atención
+        </p>
+
+        <p class="text-slate-700 leading-relaxed">
+          Lunes a viernes:<br/>
+          9:00 am – 7:00 pm
+        </p>
+
+        <p class="mt-4 text-slate-700 leading-relaxed">
+          Sábados:<br/>
+          9:00 am – 1:00 pm
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // TIMELINE
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#contacto",
+      start: "top 80%",   // cuando entra al viewport
+      end: "top 20%",     // rango de animación
+      scrub: 1,
+    }
+  });
+
+  // Animación de la imagen
+  tl.from("#imagen", {
+    y: -80,
+    opacity: 0,
+    duration: 2,
+    ease: "power3.out"
+  });
+
+</script>

@@ -1,6 +1,6 @@
 ---
 const links = [
-  { href: '#inicio', label: 'Inicio' },
+  { href: '#hero', label: 'Inicio' },
   { href: '#servicios', label: 'Servicios' },
   { href: '#testimonios', label: 'testimonios' },
   { href: '#contacto', label: 'Contacto' },
@@ -88,3 +88,30 @@ const links = [
     </details>
   </div>
 </nav>
+
+<script>
+  import gsap from "gsap";
+  import ScrollToPlugin from "gsap/ScrollToPlugin";
+
+  gsap.registerPlugin(ScrollToPlugin);
+
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const targetId = link.getAttribute("href");
+      if (!targetId) return;
+      const targetEl = document.querySelector(targetId);
+
+      const mobileMenu = link.closest("details");
+      if (mobileMenu) mobileMenu.removeAttribute("open");
+
+      gsap.to(window, {
+        duration: 0.8,
+        scrollTo: { y: targetEl || 0, offsetY: 80 },
+        ease: "power2.out"
+      });
+    });
+  });
+</script>
