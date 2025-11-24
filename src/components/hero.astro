@@ -1,0 +1,83 @@
+<div class="bg-white ">
+<div id="hero" class="w-full h-screen  bg-sky-500">
+    <section id="seccion1" class="w-full h-[200vh] py-16 bg-white flex justify-center">
+      <div class="relative w-full max-w-5xl">
+        <div class="flex flex-col my-45 md:flex-row items-center md:items-start gap-8 md:gap-16">
+          {/* TEXT */}
+          <div class="flex-1 m-20 text-center md:text-left">
+            <h1 class="text-4xl md:text-5xl font-bold text-sky-500 mb-4">
+              Sonrisas saludables para toda la familia
+            </h1>
+            <p class="text-sky-500 mb-6">
+              En DentalCare, nos dedicamos a brindar atención dental de calidad en un ambiente cómodo y amigable. ¡Tu sonrisa es nuestra prioridad!
+            </p>
+            <a
+              href="https://wa.me/XXXXXXXXXXX"
+              target="_blank"
+              class="inline-block rounded-full bg-sky-500 px-6 py-3 text-sm font-medium text-white shadow hover:bg-sky-500 hover:-translate-y-0.5 transition"
+            >
+              Reserva tu cita ahora
+            </a>
+          </div>
+
+          {/* IMAGE / SVG */}
+            <div
+              style="
+                width: 260px;
+                height: 360px;
+                background-image: url('/consul.png');
+                background-size: cover;
+                background-position: center;
+                clip-path: path('M20 0 H160 Q260 180 160 360 H20 Z');
+              "
+            ></div>
+
+      </div>
+    </section>
+</div>
+</div>
+
+<!-- GSAP ANIMATION -->
+<script >
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+      ease: "power2.out",
+      scrollTrigger: {
+        pin: true,
+        trigger: "#hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1,
+      }
+    });
+
+     tl.to(
+      "#hero",
+      {
+        maskSize: "clamp(20vh, 25%, 30vh)",
+      },
+      0.15
+    )
+    tl.to(
+      "#seccion1",
+      {
+        opacity: 0,
+        y: -100,
+      },
+      0.15);
+
+</script>
+
+<style>
+  #hero { 
+  mask-image: url('../assets/diente.svg');
+  mask-position: center;  
+  mask-repeat: no-repeat;
+  mask-size: clamp(500vh,3500%,0vh);
+
+} 
+</style>
